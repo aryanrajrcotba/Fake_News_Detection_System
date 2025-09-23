@@ -15,7 +15,7 @@ except FileNotFoundError:
     exit()
 
 # NewsAPI configuration
-API_KEY = "API_KEY"  # <-- IMPORTANT: Replace with your actual NewsAPI key
+API_KEY = "96db3e7b7b8a452c981a5465f0f64d50"  # <-- IMPORTANT: Replace with your actual NewsAPI key
 NEWS_API_URL = f"https://newsapi.org/v2/top-headlines?country=us&apiKey={API_KEY}"
 
 def fetch_news():
