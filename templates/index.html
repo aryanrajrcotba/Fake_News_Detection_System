@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📰 Live News Headlines</h1>
+        <p>Click "Check Authenticity" to classify an article using our AI model.</p>
+        <div class="news-grid">
+            {% for article in articles %}
+                <div class="news-card">
+                    <h2>{{ article.title }}</h2>
+                    <p>{{ article.description }}</p>
+                    <small>Source: {{ article.source.name }}</small>
+                    <form action="/predict" method="post">
+                        <input type="hidden" name="news_text" value="{{ article.content_to_check }}">
+                        <button type="submit" class="btn">Check Authenticity</button>
+                    </form>
+                </div>
+            {% else %}
+                <p class="error">Could not fetch news articles. Please check your API key or network connection.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
