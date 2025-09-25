@@ -9,12 +9,19 @@
 <body>
     <div class="container">
         <h1>Prediction Result</h1>
-        <div class="result-box {{ 'real' if 'Real' in prediction else 'fake' }}">
+        <div class="result-box {{ 'real' if 'Real' in prediction else ('fake' if 'Fake' in prediction else 'other') }}">
             <h2>{{ prediction }}</h2>
+            {% if confidence %}
+            <p class="confidence-text">Confidence: <strong>{{ confidence }}</strong></p>
+            {% endif %}
         </div>
-        <h3>Original Text:</h3>
-        <p class="original-text">"{{ news_text }}"</p>
-        <a href="/" class="btn-back">← Go Back to News</a>
+
+        <div class="text-display-card">
+            <h3>Original Text</h3>
+            <p class="original-text">"{{ original_text }}"</p>
+        </div>
+
+        <a href="/" class="btn-back">← Check Another Article</a>
     </div>
 </body>
 </html>

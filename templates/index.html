@@ -8,16 +8,41 @@
 </head>
 <body>
     <div class="container">
-        <h1>📰 Live News Headlines</h1>
-        <p>Click "Check Authenticity" to classify an article using our AI model.</p>
+        <h1>Fake News Detection System</h1>
+
+        {% if chart_image %}
+        <div class="dashboard-card">
+            <h2>Today's News Statistics</h2>
+            <div class="chart-container">
+                <img src="{{ url_for('static', filename=chart_image) }}" alt="News Classification Chart">
+            </div>
+        </div>
+        {% endif %}
+        <div class="user-input-card">
+            <h2>Check Your Own News (Any Language)</h2>
+            <p>Paste any news text below to get an instant analysis from our AI model.</p>
+            <form action="/predict" method="post">
+                <textarea name="news_text" rows="8" placeholder="Paste your news article text here..." required></textarea>
+                <button type="submit" class="btn">Analyze Text</button>
+            </form>
+        </div>
+        
+        <hr class="section-divider">
+        <h2>📰 Latest Articles from API</h2>
+
         <div class="news-grid">
             {% for article in articles %}
                 <div class="news-card">
+                    <div class="card-header">
+                        <small>Source: {{ article.source.name }}</small>
+                        <div class="credibility credibility-{{ article.credibility.value }}">
+                            Credibility: <strong>{{ article.credibility.score }}</strong>
+                        </div>
+                    </div>
                     <h2>{{ article.title }}</h2>
-                    <p>{{ article.description }}</p>
-                    <small>Source: {{ article.source.name }}</small>
+                    <p>{{ article.description or 'No description available.' }}</p>
                     <form action="/predict" method="post">
-                        <input type="hidden" name="news_text" value="{{ article.content_to_check }}">
+                        <input type="hidden" name="news_text" value="{{ article.title + ' ' + (article.description or '') }}">
                         <button type="submit" class="btn">Check Authenticity</button>
                     </form>
                 </div>

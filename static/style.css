@@ -5,123 +5,59 @@ body {
     margin: 0;
     padding: 20px;
 }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+h1, h2 { text-align: center; color: #2c3e50; }
+p { text-align: center; color: #7f8c8d; margin-bottom: 40px; }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
+/* Dashboard & User Input Cards */
+.dashboard-card, .user-input-card { background: #ffffff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); padding: 25px; margin-bottom: 40px; }
+.dashboard-card h2, .user-input-card h2 { margin-top: 0; }
+.user-input-card p { margin-bottom: 20px; }
+.chart-container { position: relative; margin: auto; height: 300px; width: 100%; max-width: 300px; }
+.user-input-card textarea { width: 100%; padding: 15px; border-radius: 5px; border: 1px solid #ccc; font-family: inherit; font-size: 1rem; margin-bottom: 15px; box-sizing: border-box; resize: vertical; }
+.section-divider { border: 0; height: 1px; background: #e0e0e0; margin: 40px 0; }
 
-h1 {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 10px;
-}
+/* News Grid & Card Styles */
+.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
+.news-card { background: #ffffff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); padding: 20px; display: flex; flex-direction: column; }
+.news-card .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.news-card .credibility { font-size: 0.8rem; padding: 4px 8px; border-radius: 12px; color: white; }
+.credibility-5 { background-color: #1e8449; } /* Dark Green */
+.credibility-4 { background-color: #2ecc71; } /* Green */
+.credibility-3 { background-color: #f39c12; } /* Orange */
+.credibility-0 { background-color: #95a5a6; } /* Gray */
+.news-card h2 { font-size: 1.2rem; margin-top: 0; }
+.news-card p { font-size: 0.95rem; color: #555; flex-grow: 1; text-align: left; }
+.news-card small { color: #95a5a6; }
 
-p {
-    text-align: center;
-    color: #7f8c8d;
-    margin-bottom: 40px;
-}
+/* Button Styles */
+.btn { display: block; width: 100%; padding: 12px; background-color: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; text-align: center; font-weight: bold; transition: background-color 0.3s; }
+.btn:hover { background-color: #2980b9; }
 
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 25px;
-}
+/* Results Page Styling */
+.result-box { padding: 40px; border-radius: 8px; text-align: center; margin: 30px 0; }
+.result-box h2 { margin: 0; font-size: 2.5rem; color: white; }
+.result-box.real { background-color: #2ecc71; }
+.result-box.fake { background-color: #e74c3c; }
+.text-display-card { background: #ecf0f1; border-left: 5px solid #bdc3c7; padding: 1px 20px; margin-bottom: 20px; }
+.text-display-card h3 { color: #34495e; text-align: left; }
+.original-text, .translated-text { text-align: left; font-style: italic; white-space: pre-wrap; word-wrap: break-word; }
+.btn-back { display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #95a5a6; color: white; text-decoration: none; border-radius: 5px; }
+.btn-back:hover { background-color: #7f8c8d; }
+.error { color: #e74c3c; font-weight: bold; }
 
-.news-card {
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-}
+.result-box.other { background-color: #3498db; } /* Blue for "Opinion / Other" */
 
-.news-card h2 {
-    font-size: 1.2rem;
-    color: #34495e;
-    margin-top: 0;
-}
-
-.news-card p {
-    font-size: 0.95rem;
-    color: #555;
-    flex-grow: 1;
-    text-align: left;
-}
-
-.news-card small {
-    color: #95a5a6;
-    margin-bottom: 15px;
-}
-
-.btn {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    background-color: #3498db;
+.confidence-text {
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-    font-weight: bold;
-    transition: background-color 0.3s;
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 1.1rem;
+    opacity: 0.9;
 }
 
-.btn:hover {
-    background-color: #2980b9;
-}
-
-/* --- Results Page Styling --- */
-.result-box {
-    padding: 40px;
-    border-radius: 8px;
-    text-align: center;
-    margin: 30px 0;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.result-box h2 {
-    margin: 0;
-    font-size: 2.5rem;
-    color: white;
-}
-
-.result-box.real {
-    background-color: #2ecc71; /* Green for Real */
-}
-
-.result-box.fake {
-    background-color: #e74c3c; /* Red for Fake */
-}
-
-.original-text {
-    background-color: #ecf0f1;
-    border-left: 5px solid #bdc3c7;
-    padding: 15px;
-    font-style: italic;
-    text-align: left;
-}
-
-.btn-back {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #95a5a6;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.btn-back:hover {
-    background-color: #7f8c8d;
-}
-
-.error {
-    color: #e74c3c;
-    font-weight: bold;
+/* Add to your style.css file */
+.chart-container img {
+    max-width: 100%;
+    height: auto;
 }
