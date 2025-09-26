@@ -63,12 +63,12 @@ def home():
 
             if top_label == "reliable news":
                 stats["Real News"] += 1
-            else: # Everything else (fabricated, opinion, satire) is counted as Fake News
+            else: 
                 stats["Fake News"] += 1
         except Exception as e:
             print(f"Error classifying article for dashboard: {e}")
 
-    # --- Generate Plot with Matplotlib ---
+    
     labels = stats.keys()
     sizes = stats.values()
     colors = ['#2ecc71', '#e74c3c'] # Green for Real, Red for Fake
